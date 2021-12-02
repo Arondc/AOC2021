@@ -19,11 +19,7 @@ public class SecondDay {
     }
 
     public void processOrders(List<Order> orders){
-        Position p = new Position();
-        for(Order order:orders){
-            movementStrategy.processOrder(order,p);
-        }
-
+        Position p = movementStrategy.processOrders(orders);
         System.out.println(p);
         System.out.println(p.getVerticalPosition() * p.getDepth());
     }

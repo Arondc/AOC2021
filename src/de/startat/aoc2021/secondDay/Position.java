@@ -4,8 +4,6 @@ public class Position{
         int depth = 0;
         int verticalPosition = 0;
 
-        int aim = 0;
-
         @Override
         public String toString() {
             return "Position{" +
@@ -21,19 +19,6 @@ public class Position{
     public int getVerticalPosition() {
         return verticalPosition;
     }
-
-    public int getAim() {
-        return aim;
-    }
-
-    public void increaseAim(Integer value){
-            aim+=value;
-    }
-
-    public void decreaseAim(Integer value){
-        increaseAim(-value);
-    }
-
 
     public void moveVertically(Integer distance){
             verticalPosition += distance;
