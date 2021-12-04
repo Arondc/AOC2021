@@ -55,13 +55,14 @@ public class BingoService {
     }
 
 
-    public BingoBoard checkForFinishedBoard(BingoGame game) {
+    public List<BingoBoard> checkForFinishedBoard(BingoGame game) {
+        List<BingoBoard> finishedBoards = new ArrayList<>();
         for (BingoBoard board : game.getActiveBoards()) {
             if(boardIsFinished(board)){
-                return board;
+                finishedBoards.add(board);
             }
         }
-        return null;
+        return finishedBoards;
     }
 
     private boolean boardIsFinished(BingoBoard board) {

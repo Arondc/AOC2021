@@ -38,8 +38,8 @@ public class FourthDay {
             log.info("marking number # "+ round +":" + number.getNumber());
             number.setMarked(true);
 
-            BingoBoard finishedBoard;
-            while((finishedBoard = bingoService.checkForFinishedBoard(game)) != null) {
+            List<BingoBoard> finishedBoards = bingoService.checkForFinishedBoard(game);
+            for(BingoBoard finishedBoard : finishedBoards){
                 finishedBoard.setFinishedByNumber(number);
                 log.info("finished a board with drawing number: " + number.getNumber() + " having a score of " + bingoService.sumUnmarkedNumbers(finishedBoard) * number.getNumber());
             }
