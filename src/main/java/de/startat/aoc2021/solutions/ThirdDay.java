@@ -23,26 +23,25 @@ public class ThirdDay {
         int bitLength = lines.get(0).length();
         List<List<Integer>> bits = lines.stream().map(s -> Arrays.stream(s.split("")).map(Integer::valueOf).collect(toList())).collect(toList());
 
-        log.info(()->"Anzahl der Bits im String:" + bitLength);
-        log.info(()->"Erste Zeile als BitFeld:" + bits.get(0));
+        log.info(()->"amount of bits per line:" + bitLength);
 
-        String mostCommonBits = buildMostCommonBitString(bits, bitLength);
+        String gammaRate = buildGammaRate(bits, bitLength);
 
-        log.info(()->"most common bits: " + mostCommonBits);
+        log.info(()->"gamma rate: " + gammaRate);
 
-        String leastCommonBits = invertBitString(mostCommonBits);
+        String epsilonRate = invertBitString(gammaRate);
 
-        log.info(()->"least common bits: " + leastCommonBits);
+        log.info(()->"least common bits: " + epsilonRate);
 
-        long mostCommonNumeric = bitStringToNumeric(mostCommonBits);
-        long leastCommonNumeric = bitStringToNumeric(leastCommonBits);
+        long gammaRateNumeric = bitStringToNumeric(gammaRate);
+        long epsilonRateNumeric = bitStringToNumeric(epsilonRate);
 
-        log.info(()->"most common numeric: " + mostCommonNumeric);
-        log.info(()->"least common numeric: " + leastCommonNumeric);
-        log.info(()->"numerics multiplied: " + (mostCommonNumeric * leastCommonNumeric));
+        log.info(()->"gamma rate numeric: " + gammaRateNumeric);
+        log.info(()->"epsilon rate numeric: " + epsilonRateNumeric);
+        log.info(()->"gamma x epsilon: " + (gammaRateNumeric * epsilonRateNumeric));
     }
 
-    private String buildMostCommonBitString(List<List<Integer>> bits, int bitLength){
+    private String buildGammaRate(List<List<Integer>> bits, int bitLength){
         StringBuilder result = new StringBuilder(Strings.repeat("0",bitLength));
         for(int i = 0; i<bitLength;i++){
             final int index = i;
