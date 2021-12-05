@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
@@ -22,5 +23,9 @@ public class FileReadService {
 
     public List<Integer> getFileIntegers(String filename) throws URISyntaxException, IOException {
         return getFileLines(filename).stream().map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    public <T> List<T> getFileObjects(String filename, Function<String,T> builderFunction) throws URISyntaxException, IOException{
+        return getFileLines(filename).stream().map(builderFunction).collect(Collectors.toList());
     }
 }

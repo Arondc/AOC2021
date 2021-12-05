@@ -35,7 +35,7 @@ public class FourthDay {
     private void runGame(BingoGame game){
         for(BingoNumber number : game.getNumbers()){
             long round = game.getNumbers().stream().filter(BingoNumber::getMarked).count() + 1;
-            log.info("marking number # "+ round +":" + number.getNumber());
+            log.info("marking number #"+ round +" :" + number.getNumber());
             number.setMarked(true);
 
             List<BingoBoard> finishedBoards = bingoService.checkForFinishedBoard(game);
