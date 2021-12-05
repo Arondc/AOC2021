@@ -27,12 +27,22 @@ public class Line {
     }
 
     public List<Coordinate> getAllLineCoordinates() {
-        if(coordinate1.getX().equals(coordinate2.getX())){
+        if(coordinate1.getX().equals(coordinate2.getX())){  //vertical
             int x = coordinate1.getX();
             return IntStream.range(coordinate1.getY(),coordinate2.getY()+1).mapToObj(y -> new Coordinate(x,y)).collect(Collectors.toList());
-        } else {
+        } else if(coordinate1.getY().equals(coordinate2.getY())) {  //horizontal
             int y = coordinate1.getY();
             return IntStream.range(coordinate1.getX(),coordinate2.getX()+1).mapToObj(x -> new Coordinate(x,y)).collect(Collectors.toList());
+        } else {    //diagonal
+            boolean isFalling = coordinate1.getY() < coordinate2.getY(); //0,0 is upper left corner!
+
+            return IntStream
+                    .range(coordinate1.getX(),coordinate2.getX()+1)
+                    .mapToObj(x -> new Coordinate(x,
+                            isFalling?
+                                    coordinate1.getY() - (coordinate1.getX()-x)
+                                    :coordinate1.getY() + (coordinate1.getX()-x) ))
+                    .collect(Collectors.toList());
         }
     }
 

@@ -42,7 +42,8 @@ public class FifthDay {
         log.info(lines.size() + " lines");
         log.info( lines.stream().filter(Line::isHorizontalOrVertical).count() + " horizontal/vertical lines");
 
-        Map<Coordinate, Long> coordinateCountingMap = lines.stream().filter(Line::isHorizontalOrVertical)
+        Map<Coordinate, Long> coordinateCountingMap = lines.stream()
+                //.filter(Line::isHorizontalOrVertical) //comment in for part1 solution
                 .map(Line::getAllLineCoordinates)
                 .flatMap(Collection::stream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));

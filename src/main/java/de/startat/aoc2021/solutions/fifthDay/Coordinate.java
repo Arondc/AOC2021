@@ -14,9 +14,25 @@ public class Coordinate implements Comparable<Coordinate> {
 
     @Override
     public int compareTo(Coordinate c2) {
-        if ((this.x < c2.x) || (this.y < c2.y)) {
+        //diagonal falling
+        if ((this.x < c2.x) && (this.y < c2.y)) {
             return -1;
         }
+        //diagonal rising
+        if ((this.x < c2.x) && (this.y > c2.y)) {
+            return -1;
+        }
+
+        //vertical
+        if((this.x.equals(c2.x)) && (this.y < c2.y)){
+            return -1;
+        }
+
+        //horizontal
+        if((this.y.equals(c2.y)) && (this.x < c2.x)){
+            return -1;
+        }
+
         return 1;
     }
 
