@@ -47,7 +47,7 @@ public class FifthDay {
                 .flatMap(Collection::stream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        long countOfCrossings = coordinateCountingMap.values().stream().filter(c-> c > 1).count();
+        long countOfCrossings = coordinateCountingMap.entrySet().stream().filter(e-> e.getValue() > 1).peek(e -> log.info((e.toString()))).count();
 
         log.info("The given lines cross in " + countOfCrossings + " points");
     }
