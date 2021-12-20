@@ -25,7 +25,7 @@ public class HeightCoordinate {
         this.line = line;
         this.column = column;
         this.height = height;
-        justARandomValue = new Random(line * (column* 10007L) * (height* 19997L)).nextLong();
+        justARandomValue = new Random(line * (column* 557L) * (height* 19997L)).nextLong();
     }
 
 }
