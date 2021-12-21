@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Aoc2021Application implements CommandLineRunner {
 
     @Autowired
-    NinthDay day;
+    TenthDay day;
 
     public static void main(String[] args) {
         SpringApplication.run(Aoc2021Application.class, args);
